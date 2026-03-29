@@ -254,7 +254,7 @@
   .ach-sub { font-size: 0.825rem; color: var(--ink-muted); line-height: 1.5; }
 
   /* SKILLS */
-  .skills-layout { display: grid; grid-template-columns: 1fr 1.4fr; gap: 5rem; align-items: start; }
+  .skills-layout { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: start; max-width: 680px; }
   .skill-group { margin-bottom: 2rem; }
   .skill-group-label {
     font-size: 0.7rem; font-weight: 600;
@@ -272,31 +272,6 @@
     transition: border-color var(--transition), background var(--transition);
   }
   .skill-pill:hover { border-color: var(--gold); background: rgba(200,148,58,0.05); }
-  .skill-pill.featured {
-    background: var(--ink);
-    color: var(--cream);
-    border-color: var(--ink);
-  }
-  .skill-pill.featured:hover { background: var(--gold); border-color: var(--gold); }
-
-  /* Bar chart */
-  .bar-item { margin-bottom: 1.2rem; }
-  .bar-meta { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.4rem; }
-  .bar-name { font-size: 0.875rem; font-weight: 500; color: var(--ink); }
-  .bar-pct { font-size: 0.775rem; color: var(--ink-muted); }
-  .bar-track {
-    height: 5px; background: rgba(26,24,22,0.07);
-    border-radius: 10px; overflow: hidden;
-  }
-  .bar-fill {
-    height: 100%; border-radius: 10px;
-    background: var(--ink);
-    transform-origin: left;
-    animation: barIn 1.2s cubic-bezier(0.4,0,0.2,1) both;
-  }
-  .bar-fill.gold { background: var(--gold); }
-  .bar-fill.teal { background: var(--teal); }
-
   /* PROJECTS */
   .projects-grid {
     display: grid;
@@ -349,16 +324,6 @@
     background: var(--warm);
     color: var(--ink-muted);
   }
-  .proj-soon {
-    position: absolute; top: 1.5rem; right: 1.5rem;
-    font-size: 0.7rem; font-weight: 600;
-    letter-spacing: 0.08em; text-transform: uppercase;
-    color: var(--gold);
-    background: rgba(200,148,58,0.1);
-    padding: 0.3rem 0.65rem;
-    border-radius: 20px;
-  }
-
   /* EXPERIENCE */
   .exp-bg { background: var(--ink); color: var(--cream); }
   .exp-bg .section-eyebrow { color: var(--gold-light); }
@@ -494,11 +459,6 @@
     from { opacity: 0; transform: translateY(30px); }
     to { opacity: 1; transform: translateY(0); }
   }
-  @keyframes barIn {
-    from { transform: scaleX(0); }
-    to { transform: scaleX(1); }
-  }
-
   .reveal {
     opacity: 0; transform: translateY(24px);
     transition: opacity 0.7s ease, transform 0.7s ease;
@@ -509,7 +469,6 @@
   @media (max-width: 768px) {
     .hero { grid-template-columns: 1fr; padding-top: 5rem; }
     .hero-visual { order: -1; }
-    .skills-layout { grid-template-columns: 1fr; gap: 2rem; }
     .edu-grid { grid-template-columns: 1fr; }
     .contact-layout { grid-template-columns: 1fr; gap: 2rem; }
     nav { padding: 1rem 1.5rem; }
@@ -630,8 +589,8 @@
         <div class="skill-group">
           <div class="skill-group-label">Programming</div>
           <div class="skill-pills">
-            <span class="skill-pill featured">Python</span>
-            <span class="skill-pill featured">SQL</span>
+            <span class="skill-pill">Python</span>
+            <span class="skill-pill">SQL</span>
             <span class="skill-pill">R</span>
             <span class="skill-pill">Pandas</span>
             <span class="skill-pill">scikit-learn</span>
@@ -642,7 +601,7 @@
         <div class="skill-group">
           <div class="skill-group-label">BI & Visualisation</div>
           <div class="skill-pills">
-            <span class="skill-pill featured">Power BI</span>
+            <span class="skill-pill">Power BI</span>
             <span class="skill-pill">Tableau</span>
             <span class="skill-pill">Excel (Advanced)</span>
             <span class="skill-pill">R Shiny</span>
@@ -664,7 +623,7 @@
         <div class="skill-group">
           <div class="skill-group-label">Marketing & CRM</div>
           <div class="skill-pills">
-            <span class="skill-pill featured">Google Analytics</span>
+            <span class="skill-pill">Google Analytics</span>
             <span class="skill-pill">CRM Systems</span>
             <span class="skill-pill">Ecommerce Analytics</span>
             <span class="skill-pill">Customer Segmentation</span>
@@ -675,45 +634,16 @@
           <div class="skill-group-label">Languages</div>
           <div class="skill-pills">
             <span class="skill-pill">English (Professional)</span>
-            <span class="skill-pill featured">Mandarin (Native)</span>
+            <span class="skill-pill">Mandarin (Native)</span>
             <span class="skill-pill">Taiwanese (Native)</span>
             <span class="skill-pill">Korean (Working)</span>
           </div>
         </div>
       </div>
 
-      <div class="reveal">
-        <div style="margin-bottom:2.5rem;">
-          <div class="skill-group-label" style="margin-bottom:1.2rem;">Proficiency</div>
-          <div class="bar-item">
-            <div class="bar-meta"><span class="bar-name">Power BI & Data Visualisation</span><span class="bar-pct">Expert</span></div>
-            <div class="bar-track"><div class="bar-fill" style="width:92%; animation-delay:0.1s"></div></div>
-          </div>
-          <div class="bar-item">
-            <div class="bar-meta"><span class="bar-name">Python (ML & Analytics)</span><span class="bar-pct">Advanced</span></div>
-            <div class="bar-track"><div class="bar-fill gold" style="width:85%; animation-delay:0.2s"></div></div>
-          </div>
-          <div class="bar-item">
-            <div class="bar-meta"><span class="bar-name">SQL & Database Management</span><span class="bar-pct">Advanced</span></div>
-            <div class="bar-track"><div class="bar-fill" style="width:82%; animation-delay:0.3s"></div></div>
-          </div>
-          <div class="bar-item">
-            <div class="bar-meta"><span class="bar-name">Google Analytics & CRM</span><span class="bar-pct">Advanced</span></div>
-            <div class="bar-track"><div class="bar-fill teal" style="width:80%; animation-delay:0.4s"></div></div>
-          </div>
-          <div class="bar-item">
-            <div class="bar-meta"><span class="bar-name">R (tidyverse, Shiny)</span><span class="bar-pct">Proficient</span></div>
-            <div class="bar-track"><div class="bar-fill gold" style="width:73%; animation-delay:0.5s"></div></div>
-          </div>
-          <div class="bar-item">
-            <div class="bar-meta"><span class="bar-name">Statistical Analysis (SPSS)</span><span class="bar-pct">Proficient</span></div>
-            <div class="bar-track"><div class="bar-fill" style="width:70%; animation-delay:0.6s"></div></div>
-          </div>
-        </div>
-
-        <div style="background:var(--warm); border-radius:var(--radius); padding:1.5rem;">
-          <div class="skill-group-label" style="margin-bottom:1rem;">Certifications</div>
-          <div style="display:flex; flex-direction:column; gap:0.8rem;">
+        <div class="skill-group">
+          <div class="skill-group-label">Certifications</div>
+          <div style="display:flex; flex-direction:column; gap:0.7rem;">
             <div style="display:flex; align-items:center; gap:0.8rem; font-size:0.875rem;">
               <span style="color:var(--gold); font-weight:700;">✓</span>
               <span>Microsoft Power BI Training Workshop (2024)</span>
@@ -793,27 +723,6 @@
         </div>
       </div>
 
-      <div class="proj-card" style="border-style:dashed; opacity:0.7;">
-        <span class="proj-soon">Coming soon</span>
-        <span class="proj-tag tag-crm">Ecommerce · CRM</span>
-        <div class="proj-title">Retail Customer Segmentation</div>
-        <div class="proj-org">Personal Portfolio Project</div>
-        <div class="proj-desc">Using publicly available retail datasets to build a customer segmentation and LTV prediction model. RFM analysis + clustering pipeline with a Power BI dashboard.</div>
-        <div class="proj-tech">
-          <span>Python</span><span>Power BI</span><span>RFM</span><span>Kaggle Dataset</span>
-        </div>
-      </div>
-
-      <div class="proj-card" style="border-style:dashed; opacity:0.7;">
-        <span class="proj-soon">Coming soon</span>
-        <span class="proj-tag tag-ml">GA · Analytics</span>
-        <div class="proj-title">Ecommerce Funnel Analysis</div>
-        <div class="proj-org">Personal Portfolio Project</div>
-        <div class="proj-desc">End-to-end web analytics project — funnel drop-off analysis, cohort retention, and A/B test evaluation using Google Analytics data and Python.</div>
-        <div class="proj-tech">
-          <span>Google Analytics</span><span>Python</span><span>A/B Testing</span><span>SQL</span>
-        </div>
-      </div>
 
     </div>
   </div>
@@ -913,7 +822,7 @@
         <ul class="contact-links">
           <li>
             <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
-            <a href="mailto:kaopei98@outlook.com">kaopei98@outlook.com</a>
+            <a href="/cdn-cgi/l/email-protection#fc979d938c9995c5c4bc93898890939397d29f9391"><span class="__cf_email__" data-cfemail="7d161c120d181444453d12080911121216531e1210">[email&#160;protected]</span></a>
           </li>
           <li>
             <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
@@ -958,7 +867,7 @@
   <p style="margin-top:0.4rem; font-size:0.75rem;">Open to opportunities across data analytics, CRM, and digital marketing</p>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
@@ -979,12 +888,4 @@
     if (!name || !email || !msg) {
       alert('Please fill in all fields.');
       return;
-    }
-    document.getElementById('form-success').style.display = 'block';
-    document.getElementById('name').value = '';
-    document.getElementById('email').value = '';
-    document.getElementById('msg').value = '';
-  }
-</script>
-</body>
-</html>
+    
