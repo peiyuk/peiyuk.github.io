@@ -322,7 +322,7 @@
   }
 
   /* ── CONTACT ── */
-  .contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+  .contact-layout { display: grid; grid-template-columns: 1fr; gap: 0; max-width: 560px; }
   .contact-form-wrap {
     background: var(--cream); border-radius: 20px;
     padding: 2.5rem; border: 1px solid rgba(26,24,22,0.07);
@@ -751,7 +751,11 @@
         <div class="form-success" id="form-success">
           ✓ Thanks for reaching out — I'll be in touch soon!
         </div>
+        <div id="form-error" style="display:none; margin-top:1rem; padding:0.8rem; background:#fdecea; color:#a32d2d; border-radius:8px; font-size:0.875rem; text-align:center;">
+          Something went wrong — please email me directly at kaopei98@outlook.com
+        </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -774,8 +778,8 @@
   }, { threshold: 0.08 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  // Contact form
-  function handleSend() {
+  // Contact form — Formspree
+  async function handleSend() {
     const name  = document.getElementById('fname').value.trim();
     const email = document.getElementById('femail').value.trim();
     const msg   = document.getElementById('fmsg').value.trim();
@@ -783,10 +787,29 @@
       alert('Please fill in all fields before sending.');
       return;
     }
-    document.getElementById('fname').value = '';
-    document.getElementById('femail').value = '';
-    document.getElementById('fmsg').value = '';
-    document.getElementById('form-success').style.display = 'block';
+    const btn = document.querySelector('[onclick="handleSend()"]');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+    try {
+      const res = await fetch('https://formspree.io/f/mnjlzyko', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ name, email, message: msg })
+      });
+      if (res.ok) {
+        document.getElementById('fname').value = '';
+        document.getElementById('femail').value = '';
+        document.getElementById('fmsg').value = '';
+        document.getElementById('form-success').style.display = 'block';
+        document.getElementById('form-error').style.display = 'none';
+      } else {
+        document.getElementById('form-error').style.display = 'block';
+      }
+    } catch (e) {
+      document.getElementById('form-error').style.display = 'block';
+    }
+    btn.textContent = 'Send Message →';
+    btn.disabled = false;
   }
 </script>
 </body>
